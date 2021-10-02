@@ -1,6 +1,8 @@
- import './NavBar.css';
+import React from 'react'
+import './NavBar.css';
+import CartWidget from '../Widgets/CartWidget';
 
- const NavBar = () => {
+const NavBar = () => {
      return (
         <header>
             <nav className="navBar">
@@ -10,7 +12,9 @@
                     <li><a href=".">Carrito</a></li>
                 </ul>
             </nav> 
+            <CartWidget />
         </header>
      );
  };
+ 
 export default NavBar;
