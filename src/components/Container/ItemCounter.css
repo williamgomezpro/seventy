@@ -1,0 +1,16 @@
+.controles{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    padding: 0.8em 0;
+}
+
+.controles > button{
+    width: 25px;
+    height: 25px;
+}
+
+button{
+    width: 220px;
+    height: 30px;
+}
