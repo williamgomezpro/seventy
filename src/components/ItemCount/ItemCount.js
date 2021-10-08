@@ -6,9 +6,9 @@ const ItemCount = ({stock, initial}) => {
     const [manejarStock, setManejarStock] = useState(parseInt(stock) - contador);
     const [carrito, setCarrito] = useState('');
 
-    console.log(`stock Inicial: ${parseInt(stock)}`)
-    console.log(`stock Actual: ${manejarStock}`)
-    console.log(`cantidad: ${contador}`)
+    console.log(`stock Inicial: ${parseInt(stock)}`);
+    console.log(`stock Actual: ${manejarStock}`);
+    console.log(`cantidad: ${contador}`);
 
     const incrementar = () => {
         if (manejarStock > 0) {

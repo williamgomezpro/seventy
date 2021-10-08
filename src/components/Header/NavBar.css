@@ -2,12 +2,13 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 1em;
-    padding: 1em;
+    padding: 20px 100px;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid Gainsboro;
 }
 
 .navBar {
-    width: 50%;
+    width: 95%;
     text-align: right;
 }
 
