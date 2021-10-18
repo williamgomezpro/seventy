@@ -1,0 +1,10 @@
+.main__detail {
+    display: flex;
+    flex-direction: column;
+    background-color: WhiteSmoke;
+}
+
+.main_detail h1 {
+    font-family: 'Lexend', sans-serif;
+    padding: 50px 0 30px;
+}

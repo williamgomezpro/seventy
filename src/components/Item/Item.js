@@ -1,7 +1,10 @@
 import React from "react";
 import "./Item.css";
 
-const Item = ({price, title, pictureUrl, current}) => {
+// se importa link de react router DOM
+import { Link } from "react-router-dom";
+
+const Item = ({id, price, title, pictureUrl, current}) => {
   return (
     <article className="card">
       <div className="card__header">
@@ -12,7 +15,7 @@ const Item = ({price, title, pictureUrl, current}) => {
         <p className="card__body--price"><b>Precio: </b>{price} {current}</p>
       </div>
       <div className="card__footer">
-        <button>Comprar</button>
+        <Link to={`/detalle/${id}`}>Ver Detalle</Link>
       </div>
     </article>
   );
