@@ -2,7 +2,7 @@ import React from "react";
 import "./NavBar.css";
 
 // se importa link de react router DOM
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 // se importa el componente del carrito
 import CartWidget from "../Widgets/CartWidget";
@@ -10,6 +10,9 @@ import CartWidget from "../Widgets/CartWidget";
 const NavBar = () => {
   return (
     <header>
+      <div className="logo">
+        <Link to="/">Senventy</Link>
+      </div>
       <nav className="navBar">
         <ul>
           <li>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
 header {
     height: 100%;
     display: flex;
@@ -8,8 +10,21 @@ header {
     background-color: Lavender;
 }
 
+.logo {
+    text-align: left;
+    width: 20%;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo a {
+    text-decoration: none;
+    color: indigo;
+}
+
 .navBar {
-    width: 95%;
+    width: 75%;
     text-align: right;
 }
 
