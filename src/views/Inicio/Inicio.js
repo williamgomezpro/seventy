@@ -1,7 +1,7 @@
 import React from 'react';
 
 // se importa el componente con el listado principal de productos
-import ItemListContainer from '../../components/Container/ItemListContainer';
+import ItemListContainer from '../../components/Container/ItemListContainer/ItemListContainer';
 
 const Inicio = () => {
     return (

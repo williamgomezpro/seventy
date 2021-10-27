@@ -1,14 +1,15 @@
 import React from 'react';
 import './CartWidget.css';
+
+// iconos de font awesomw a usar
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const CartWidget = () => {
     return (
         <div className="cart">
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <FontAwesomeIcon icon="shopping-cart"/>
         </div>
-    )
-}
+    );
+};
 
-export default CartWidget
+export default CartWidget;

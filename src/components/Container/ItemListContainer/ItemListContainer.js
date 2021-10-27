@@ -1,8 +1,10 @@
 import React from "react";
-import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css";
 
-// envio la prop "title" destructurada
+// componentes
+import ItemList from "../../ItemList/ItemList";
+
+// prop "title" destructurada
 const ItemListContainer = ({title}) => {
   return (
     <div className="main">

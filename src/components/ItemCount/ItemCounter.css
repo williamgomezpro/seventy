@@ -1,16 +1,50 @@
 .controles{
     display: flex;
-    gap: 1em;
-    justify-content: center;
+    align-items: center;
     padding: 0.8em 0;
+    font-size: 1em;
+    font-family: 'Lexend', sans-serif;
 }
-
-.controles > button{
+.col__uno{
+    width: 6%;
+    display: flex;
+    justify-content: left;
+}
+.col__dos{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+}
+.col__tres{
+    width: 10%;
+    display: flex;
+    justify-content: left;    
+}
+.col__cuatro{
+    width: 74%;
+}
+.controles__button{
     width: 25px;
     height: 25px;
-}
+    color: black;
+    background-color: lavender;
+    border: 1px solid silver;
+    cursor: pointer;
 
-button{
-    width: 220px;
-    height: 30px;
+}
+.add__cart {
+    color: white;
+    background-color: indigo;
+    border-radius: 12px;
+    height: 35px;
+    width: 200px;
+    border: 1px solid silver;
+    font-size: 1em;
+
+}
+.add__cart:hover {
+    color: black;
+    background-color: LightGray;
+    cursor: pointer;
+    border: 1px solid silver;
 }
