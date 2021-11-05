@@ -23,7 +23,9 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
-      <CartWidget />
+      <Link to="/carrito" className="cart">
+        <CartWidget />
+      </Link>
     </header>
   );
 };

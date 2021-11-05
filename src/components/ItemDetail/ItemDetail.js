@@ -1,16 +1,36 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import "./ItemDetail.css";
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 // componentes
 import ItemCount from "../ItemCount/ItemCount";
 
-const ItemDetail = ({data}) => {
-  const [carrito, setCarrito] = useState(0); // estado para condicionar, cuando el componente hijo "ItemCount" emita el evento onClick
+// se importa el contexto del carrito de compras
+import {CartContext} from "../../Contexts/CartContext";
 
-  // envento que se pasa luego por props al compoenente hijo "ItemCount" y que actualiza el carrito
+const ItemDetail = ({data}) => {
+  // estado para condicionar, cuando el componente hijo "ItemCount" emita el evento onClick
+  const [quantity, setQuantity] = useState(0);
+
+  // uso del contexto del carrito de compras
+  const {addToCart, isInCart} = useContext(CartContext);
+
+  // envento que se pasa por props al compoenente hijo "ItemCount"
   const onAdd = (e) => {
-    setCarrito(e.target.value);
+    // creo un objeto con el detalle del producto
+    const productObject = {
+      id: data.id,
+      name: data.title,
+      price: data.price,
+      quantity: e.target.value,
+      img: data.picture,
+    };
+    // se invoca la función del contexto que agrega al carrito
+    addToCart(productObject);
+
+    // se actualiza la cantidad seleccionada por el usuario
+    setQuantity(e.target.value);
   };
 
   return (
@@ -29,16 +49,23 @@ const ItemDetail = ({data}) => {
           </p>
           <p>
             Stock:{" "}
-            <span>{carrito === 0 ? data.stock : data.stock - carrito}</span>
+            <span>{quantity === 0 ? data.stock : data.stock - quantity}</span>
           </p>
-          {carrito === 0 ? (
+          {quantity === 0 && isInCart(data.id) === false ? (
             <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />
           ) : (
             <>
               <div className="detalle__body--buttom">
-                <h3>{`Añadido al carrito la cantidad de: ${carrito}`}</h3>
-                <Link to="/Carrito" className="comprar">
-                  Finalizar compra
+                <h3>
+                  {quantity > 0 && isInCart(data.id) === true
+                    ? <span className="detalle__body--add">Producto añadido exitosamente al carrito</span>
+                    : <span className="detalle__body--notadd">Este producto ya esta añadido al carrito</span>}
+                </h3>
+                <Link to="/carrito" className="detail__buton">
+                <FontAwesomeIcon icon="shopping-cart" /> Finalizar compra
+                </Link>
+                <Link to="/" className="detail__buton">
+                <FontAwesomeIcon icon="hand-point-right" /> Seguir comprando
                 </Link>
               </div>
             </>

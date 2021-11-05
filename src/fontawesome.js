@@ -6,7 +6,11 @@ import {
   faShoppingCart,
   faSpinner,
   faCircleNotch,
+  faEdit,
+  faTrashAlt,
+  faHandPointRight,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons";
 
 // se crea la librería de iconos a usar
-library.add(faShoppingCart, faSpinner, faCircleNotch);
+library.add(faShoppingCart, faSpinner, faCircleNotch, faEdit, faTrashAlt, faHandPointRight, faTrash);

@@ -37,3 +37,10 @@ header {
     color: rgb(70, 68, 68);
     cursor: pointer;
 }
+.cart {
+    font-size: 1.5em;
+    width: 5%;
+    text-align: right;
+    color: indigo;
+    cursor: pointer;
+}

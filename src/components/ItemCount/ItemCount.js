@@ -1,5 +1,7 @@
 import {useState} from "react";
 import "./ItemCounter.css";
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ItemCount = ({stock, initial, onAdd}) => {
   // estados iniciales
@@ -26,16 +28,29 @@ const ItemCount = ({stock, initial, onAdd}) => {
     <>
       <div className="controles">
         <div className="col__uno">
-          <button className="controles__button" onClick={incrementar}>+</button>
+          <button className="controles__button" onClick={incrementar}>
+            +
+          </button>
         </div>
         <div className="col__dos">
           <span>{contador}</span>
         </div>
         <div className="col__tres">
-          <button className="controles__button" onClick={decrementar}>-</button>
+          <button className="controles__button" onClick={decrementar}>
+            -
+          </button>
         </div>
         <div className="col__cuatro">
-          <button className="add__cart" onClick={onAdd} value={contador}>Añadir al carrito</button>
+          <button className="buton" onClick={onAdd} value={contador}>
+            <FontAwesomeIcon icon="shopping-cart" /> Añadir al carrito
+          </button>
+        </div>
+        <div className="col__cinco">
+          <Link to="/">
+            <button className="buton">
+              <FontAwesomeIcon icon="hand-point-right" /> Seguir comprando
+            </button>
+          </Link>
         </div>
       </div>
     </>

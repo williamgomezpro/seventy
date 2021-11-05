@@ -1,0 +1,162 @@
+.header__table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 30px 100px;
+  margin: 50px 100px 0;
+  border: 1px solid Gainsboro;
+  border-bottom: 0;
+  background-color: lavender;
+  font-family: "Lexend", sans-serif;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.row__table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 20px 100px;
+  margin: 0 100px;
+  border: 1px solid Gainsboro;
+  border-bottom: 0;
+  background-color: white;
+  font-family: "Lexend", sans-serif;
+  font-size: 0.9em;
+}
+
+.col__table--one {
+  grid-column: 1/2;
+}
+.ol__table--one:hover {
+  background-color: WhiteSmoke;
+}
+
+.col__table--two {
+  grid-column: 2/3;
+}
+
+.col__table--three {
+  grid-column: 3/4;
+}
+
+.col__table--four {
+  grid-column: 4/5;
+}
+
+.col__table--five {
+  grid-column: 5/6;
+}
+
+.footer__table--resumen {
+  padding: 20px 0;
+  margin: 0 100px;
+  border: 1px solid Gainsboro;
+  font-family: "Lexend", sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: flex-end;
+  text-align: right;
+}
+.footer__table--resumen > span {
+  padding: 0 100px;
+}
+.footer__table--resumen > span:first-child {
+  border-bottom: 1px solid Gainsboro;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.input__edit {
+  border: none;
+  border: 1px solid lavender;
+  width: 50px;
+  outline: none;
+  padding: 0;
+  height: 30px;
+  text-align: center;
+  background-color: AliceBlue;
+  font-weight: 700;
+}
+
+.input__edit:hover {
+  background-color: white;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+  text-align: center;
+}
+
+.acciones__edit {
+  height: 28px;
+  width: 50%;
+  border: 0;
+  border-radius: 10px;
+  background-color: LightSteelBlue;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.acciones__delet {
+  height: 28px;
+  width: 50%;
+  border: 0;
+  border-radius: 10px;
+  background-color: LightSalmon;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.acciones__edit:hover,
+.acciones__delet:hover,
+.footer__table--boton:hover {
+  background-color: Gainsboro;
+  color: black;
+}
+
+.footer__table--botonera {
+  padding: 20px 100px;
+  margin: 0 100px 30px;
+  border: 1px solid Gainsboro;
+  border-top: 0;
+  font-family: "Lexend", sans-serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  background-color: indigo;
+  display: flex;
+  column-gap: 10px;
+  justify-content: right;
+  text-align: right;
+}
+
+.footer__table--boton {
+  height: 35px;
+  width: 180px;
+  border: 0;
+  /* border-radius: 10px; */
+  background-color: white;
+  color: indigo;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.error__unidad {
+  font-family: "Lexend", sans-serif;
+  font-size: 0.9em;
+  color: OrangeRed;
+  font-weight: 700;
+}
+
+.carrito__vacio{
+  border: 1px solid LightGray;
+  background-color: MintCream;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 50px 200px;
+  font-size: 1em;
+}

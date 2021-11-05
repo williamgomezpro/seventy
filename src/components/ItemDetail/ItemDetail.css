@@ -49,23 +49,36 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  row-gap: 20px;
-  padding: 20px 0;
+  align-items: center;
+  row-gap: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: 1px solid LightGray;
+  background-color: MintCream;
 }
-.comprar {
+.detail__buton {
   display: inline-block;
   color: white;
-  background-color: indigo;
+  background-color: DarkSlateBlue;
   border-radius: 12px;
-  border: 0;
+  border: 1px solid gainsboro;
   height: 40px;
+  width: 80%;
   font-size: 1.1em;
   text-decoration: none;
-  padding: 8px;
+  padding: 8px 8px 5px; 
 }
-.comprar:hover {
+.detail__buton:hover {
   color: black;
   background-color: LightGray;
   cursor: pointer;
   border: 1px solid silver;
+}
+
+.detalle__body--add{
+  color: #4EAB54;
+}
+.detalle__body--notadd{
+  color: OrangeRed;
 }

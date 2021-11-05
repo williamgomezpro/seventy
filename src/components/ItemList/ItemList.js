@@ -11,14 +11,10 @@ const ItemList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      fetch(
-        "https://api.mercadolibre.com/sites/MLC/search?q=Zapatillas%20asic&condition=new&limit=30"
-      )
-        .then((response) => response.json())
-        .then((response) => setData(response.results))
-        .then(() => setIsLoading(false));
-    }, 1000);
+    fetch("https://api.mercadolibre.com/sites/MLC/search?q=Zapatillas%20asic&condition=new&limit=30")
+      .then((response) => response.json())
+      .then((response) => setData(response.results))
+      .then(() => setIsLoading(false));
   }, []);
 
   return (

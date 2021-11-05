@@ -1,50 +1,61 @@
-.controles{
-    display: flex;
-    align-items: center;
-    padding: 0.8em 0;
-    font-size: 1em;
-    font-family: 'Lexend', sans-serif;
+.controles {
+  display: flex;
+  align-items: center;
+  padding: 0.8em 0;
+  font-size: 1em;
+  font-family: "Lexend", sans-serif;
 }
-.col__uno{
-    width: 6%;
-    display: flex;
-    justify-content: left;
+.col__uno {
+  width: 6%;
+  display: flex;
+  justify-content: left;
 }
-.col__dos{
-    width: 10%;
-    display: flex;
-    justify-content: center;
+.col__dos {
+  width: 7%;
+  display: flex;
+  justify-content: center;
 }
-.col__tres{
-    width: 10%;
-    display: flex;
-    justify-content: left;    
+.col__tres {
+  width: 8%;
+  display: flex;
+  justify-content: left;
 }
-.col__cuatro{
-    width: 74%;
+.col__cuatro {
+  width: 40%;
+  text-align: center;
 }
-.controles__button{
-    width: 25px;
-    height: 25px;
-    color: black;
-    background-color: lavender;
-    border: 1px solid silver;
-    cursor: pointer;
+.col__cinco {
+  width: 39%;
+  text-align: center;
+}
+.controles__button {
+  width: 25px;
+  height: 25px;
+  color: black;
+  background-color: LightSteelBlue;
+  border: 1px solid silver;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+  font-family: "Lexend", sans-serif;
+}
+.controles__button:hover {
+  background-color: lavender;
+}
+.buton {
+  color: white;
+  background-color: RebeccaPurple;
+  border-radius: 12px;
+  height: 38px;
+  width: 160px;
+  border: 1px solid silver;
+  font-size: 0.9em;
+  font-family: "Lexend", sans-serif;
+  cursor: pointer;
+}
 
-}
-.add__cart {
-    color: white;
-    background-color: indigo;
-    border-radius: 12px;
-    height: 35px;
-    width: 200px;
-    border: 1px solid silver;
-    font-size: 1em;
-
-}
-.add__cart:hover {
-    color: black;
-    background-color: LightGray;
-    cursor: pointer;
-    border: 1px solid silver;
+.buton:hover {
+  color: black;
+  background-color: LightGray;
+  border: 1px solid silver;
 }

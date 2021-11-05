@@ -19,6 +19,7 @@ const ItemDetailContainer = ({title, idItem}) => {
       .then((response) =>
         // actualiza la data, con un objeto que tiene las propiedades a pintar
         setDataDetail({
+          id: response.id,
           picture: response.pictures[0].url,
           title: response.title,
           price: response.price,
