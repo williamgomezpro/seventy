@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // si se quiere cambiar el estilo del loader
 // <FontAwesomeIcon icon="circle-notch" pulse size="lg"/>
 
-const Loader = () => {
+const Loader = ({padding}) => {
     return (
-        <div className="loader">
+        <div className="loader" style={{padding: padding}}>
             <FontAwesomeIcon icon="spinner" pulse size="lg"/>
         </div>
     );

@@ -38,9 +38,35 @@ header {
     cursor: pointer;
 }
 .cart {
+    width: 5%;  
+    position: relative;
+    z-index: 1;
+    right: 0;  
+}
+
+.cart__url {
     font-size: 1.5em;
-    width: 5%;
     text-align: right;
     color: indigo;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.cart__url > div{
+    position: absolute;
+    font-size: 12px;
+    background-color: red;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: 700;
+    border: 1px solid indigo;
+    z-index: 3;
+    top:-14px;
+    right: -6px;
 }

@@ -19,7 +19,7 @@ const ItemList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <Loader padding={50}/>}
       <div className="card__list">
         {data.map((item) => {
           return (

@@ -1,76 +1,62 @@
-import {useContext, useState, useEffect} from "react";
+import {useContext, useState} from "react";
 import {CartContext} from "../../Contexts/CartContext";
-import {Link} from "react-router-dom";
 import "./Carrito.css";
 
-// iconos de font awesomw a usar
+// iconos de font awesome y boton
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import SeguirComprando from "../../components/Botones/SeguirComprando";
+import Loader from "../../components/Loader/Loader";
 
 const Carrito = () => {
   // uso del contexto CartContext
-  const {productsCart, clearCart, removeProduct, addQuantity} = useContext(CartContext);
+  const {
+    productsCart,
+    clearCart,
+    removeProduct,
+    addQuantity,
+    tQuantity,
+    totalQuantity,
+    toPay,
+    totalToPay,
+  } = useContext(CartContext);
 
-  // estados para luego condicionar las funciones de editar las unidades del producto
-  const [unidades, setUnidades] = useState(0);
-  const [errorCantidad, setErrorCantidad] = useState(false);
-  const [update, setUpdate] = useState(false);
-  const [index, setIndex] = useState();
-  const [total, setTotal] = useState(0);
+  // uso de estados
+  const [index, setIndex] = useState("");
+  const [valueInput, setValueInput] = useState("");
+  const [loader, setloader] = useState(false);
 
-  // Hook que invoca la función cada vez que se actualiza el render
-  useEffect(() => {
-    totalAPagar();
-    totalUnidades();
-  });
-
-  // función para calcular el total a pagar
-  const totalAPagar = () => {
-    const precioCantidad = productsCart.map((item) => item.price * item.quantity);
-    // se actualiza el estado con la sumatoria de todos los productos
-    setTotal(precioCantidad.reduce((acum, item) => acum + item, 0));
-  };
-
-  // función para contabilizar el total de unidades
-  const totalUnidades = () => {
-    const tUnidades = productsCart.reduce((acum, {quantity}) => {
-      const cantidad = parseInt(quantity);
-      return acum + cantidad;
-    }, 0);
-    setUnidades(tUnidades);
-  };
-  
-  const editQuantity = (indice, idProducto, e) => {
-    // obtengo el objeto con el input del campo de cantidad
+  // función para << EDITAR >>
+  const editQuantity = (indice, idProducto) => {
+    setloader(true);
+    setIndex(indice);
+    setValueInput("");
+    // obtengo el objeto con el input cantidad
     const cantidad = document.querySelector(`input[id='${indice}']`);
-
-    // verifico si el usuario introdujo un valor igual o menor que Cero, seteo valores que seran usados como condcional en el renderizado
-    if (cantidad.value <= 0) {
-      e.target.disabled = true;
-      setErrorCantidad(true);
-      // seteo de estados
-      setTimeout(() => {
-        setErrorCantidad(false);
-        e.target.disabled = false;
-      }, 2000);
-    } else {
-      // contexto que edita la cantidad en el arreglo de productos
-      addQuantity(idProducto, cantidad.value);
-      setUpdate(true);
-      // seteo de estado
-      setTimeout(() => {
-        setUpdate(false);
-      }, 1000);
-    }
+    setTimeout(() => {
+      addQuantity(idProducto, cantidad.value); // contexto que edita la cantidad en el arreglo
+      totalQuantity(); // contexto que calcula el total cantidad
+      totalToPay(); // contexto que calcula el total a pagar
+      setloader(false);
+    }, 1000);
   };
 
-  const eliminar = (idProducto) => {
-    // contexto que remueve el producto del arreglo
-    removeProduct(idProducto);
-    setUpdate(true);
-    // seteo de estado
+  // función para << ELIMINAR >>
+  const eliminar = (indice) => {
+    setloader(true);
+    setIndex(indice);
+    setValueInput(""); // seteo para renderizado condicional del valor del input
     setTimeout(() => {
-      setUpdate(false);
+      removeProduct(indice); // contexto que remueve el producto del arreglo
+      totalToPay(); // contexto que calcula el total cantidad
+      totalQuantity(); // contexto que calcula el total a pagar
+      setloader(false);
     }, 1000);
+  };
+
+  // función << ONCHANGE >>
+  const onChangeQuantity = (e, indice) => {
+    setIndex(indice); // actualiza el estado para render condicional
+    setValueInput(e.target.value); // actualiza el estado con el valor del input
   };
 
   return (
@@ -86,82 +72,107 @@ const Carrito = () => {
           </div>
           {productsCart.map((product, inx) => {
             return (
-              <div key={inx} className="row__table">
-                <div className="col__table--one">
-                  <img
-                    style={{width: 120, height: 70}}
-                    src={product.img}
-                    alt="imagen del producto"
-                  ></img>
-                </div>
-                <div className="col__table--two">
-                  <span>{product.name}</span>
-                </div>
-                <div className="col__table--three">
-                  <span>${new Intl.NumberFormat().format(product.price)}</span>
-                </div>
-                <div className="col__table--four">
-                  {errorCantidad && index === inx && update === false ? (
-                    <span className="error__unidad">Error en Cantidad</span>
-                  ) : (
-                    <input
-                      className="input__edit"
-                      id={inx}
-                      type="number"
-                      defaultValue={product.quantity}
-                    />
-                  )}
-                </div>
-                <div className="col__table--five">
-                  <div className="acciones">
-                    <button
-                      className="acciones__edit"
-                      onClick={(e) => {
-                        editQuantity(inx, product.id, e);
-                        setIndex(inx);
-                      }}
-                    >
-                      <FontAwesomeIcon icon="edit" /> Editar
-                    </button>
-                    <button
-                      className="acciones__delet"
-                      onClick={() => eliminar(product.id)}
-                    >
-                      <FontAwesomeIcon icon="trash-alt" /> Eliminar
-                    </button>
-                  </div>
-                </div>
+              <div
+                key={inx}
+                className={
+                  loader && index === inx ? "row__table--empty" : "row__table"
+                }
+              >
+                {loader && index === inx ? (
+                  <Loader padding={0} />
+                ) : (
+                  <>
+                    <div className="col__table--one">
+                      <img
+                        style={{width: 120, height: 70}}
+                        src={product.img}
+                        alt="imagen del producto"
+                      ></img>
+                    </div>
+                    <div className="col__table--two">
+                      <span>{product.name}</span>
+                    </div>
+                    <div className="col__table--three">
+                      <span>
+                        ${new Intl.NumberFormat().format(product.price)}
+                      </span>
+                    </div>
+                    <div className="col__table--four">
+                      <input
+                        className="input__edit"
+                        id={inx}
+                        type="number"
+                        value={
+                          valueInput > 0 && index === inx
+                            ? valueInput
+                            : product.quantity
+                        }
+                        onChange={(e) => onChangeQuantity(e, inx)}
+                      />
+                    </div>
+                    <div className="col__table--five">
+                      <div className="acciones">
+                        <button
+                          className="acciones__edit"
+                          onClick={(e) => editQuantity(inx, product.id)}
+                        >
+                          <FontAwesomeIcon icon="edit" /> Editar
+                        </button>
+                        <button
+                          className="acciones__delet"
+                          onClick={() => eliminar(inx)}
+                        >
+                          <FontAwesomeIcon icon="trash-alt" /> Eliminar
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             );
           })}
 
           <div className="footer__table--resumen">
-            <span>
-              <b>Total de Productos:</b> {unidades}
-            </span>
-            <span>
-              <b>Total a Pagar:</b> ${new Intl.NumberFormat().format(total)}
-            </span>
+            {loader ? (
+              <Loader padding={20} />
+            ) : (
+              <>
+                <span>
+                  <b>Total de Productos:</b> {tQuantity}
+                </span>
+                <span>
+                  <b>Total a Pagar:</b> ${" "}
+                  {new Intl.NumberFormat().format(toPay)}
+                </span>
+              </>
+            )}
           </div>
+
           <div className="footer__table--botonera">
-            <button
-              className="footer__table--boton"
-              onClick={() => {
-                clearCart();
-              }}
-            >
-              <FontAwesomeIcon icon="trash" /> Vaciar Carrito
+            <button className="footer__table--boton" onClick={clearCart}>
+              <FontAwesomeIcon icon="trash" /> Vaciar carrito
             </button>
-            <Link to="/">
-              <button className="footer__table--boton">
-                <FontAwesomeIcon icon="shopping-cart" /> Seguir comprando
-              </button>
-            </Link>
+            <SeguirComprando
+              ancho={180}
+              largo={35}
+              radius={0}
+              backgroud="white"
+              fontSize="0.9em"
+              color="indigo"
+            />
           </div>
         </>
       ) : (
         <div className="carrito__vacio">
           <h1>El Carrito esta Vacío</h1>
+          <SeguirComprando
+            ancho={180}
+            largo={35}
+            radius={0}
+            backgroud="white"
+            fontSize="0.9em"
+            color="indigo"
+          />
         </div>
       )}
     </>

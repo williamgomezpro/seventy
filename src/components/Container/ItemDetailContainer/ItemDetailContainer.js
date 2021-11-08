@@ -36,7 +36,7 @@ const ItemDetailContainer = ({title, idItem}) => {
   return (
     <div className="main__detail">
       <h1>{title}</h1>
-      {isLoading ? <Loader /> : <ItemDetail data={dataDetail} />}
+      {isLoading ? <Loader padding={50}/> : <ItemDetail data={dataDetail} />}
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.SeguirComprando {
+  border: 1px solid gainsboro;
+  font-family: "Lexend", sans-serif;
+  cursor: pointer;
+}
+.SeguirComprando:hover {
+  color: black !important;
+  background-color: LightGray !important;
+  border: 1px solid silver !important;
+}

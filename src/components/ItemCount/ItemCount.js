@@ -1,7 +1,9 @@
 import {useState} from "react";
 import "./ItemCounter.css";
-import {Link} from "react-router-dom";
+
+// iconos de font awesome a usar y botones
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import SeguirComprando from "../Botones/SeguirComprando";
 
 const ItemCount = ({stock, initial, onAdd}) => {
   // estados iniciales
@@ -46,11 +48,14 @@ const ItemCount = ({stock, initial, onAdd}) => {
           </button>
         </div>
         <div className="col__cinco">
-          <Link to="/">
-            <button className="buton">
-              <FontAwesomeIcon icon="hand-point-right" /> Seguir comprando
-            </button>
-          </Link>
+          <SeguirComprando
+            ancho={160}
+            largo={38}
+            radius={12}
+            backgroud="RebeccaPurple"
+            fontSize="0.9em"
+            color="white"
+          />
         </div>
       </div>
     </>

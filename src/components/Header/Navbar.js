@@ -23,9 +23,11 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
-      <Link to="/carrito" className="cart">
-        <CartWidget />
-      </Link>
+      <div className="cart">
+        <Link to="/carrito" className="cart__url">
+          <CartWidget />
+        </Link>
+      </div>
     </header>
   );
 };
