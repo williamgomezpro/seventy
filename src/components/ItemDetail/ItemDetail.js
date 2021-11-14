@@ -27,7 +27,7 @@ const ItemDetail = ({data}) => {
       name: data.title,
       price: data.price,
       quantity: e.target.value,
-      img: data.picture,
+      img: data.img
     };
     // se invoca la función del contexto que agrega al carrito
     addToCart(productObject);
@@ -43,19 +43,23 @@ const ItemDetail = ({data}) => {
     <div className="detail">
       <div className="detalle__body">
         <div className="detalle__body--right">
-          <img src={data.picture} alt="imagen del producto"></img>
+          <img src={data.img} alt="imagen del producto"></img>
         </div>
         <div className="detalle__body--left">
           <h2>{data.title}</h2>
           <p>
             Precio:{" "}
             <span>
-              {data.price} {data.moneda}
+              ${new Intl.NumberFormat().format(data.price)}
             </span>
           </p>
           <p>
             Stock:{" "}
-            <span>{quantity === 0 ? data.stock : data.stock - quantity}</span>
+            <span>{data.stock}</span>
+          </p>
+          <p>
+            Categoría:{" "}
+            <span>{data.category}</span>
           </p>
           {quantity === 0 && isInCart(data.id) === false ? (
             <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />

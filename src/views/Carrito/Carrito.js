@@ -84,7 +84,7 @@ const Carrito = () => {
                   <>
                     <div className="col__table--one">
                       <img
-                        style={{width: 120, height: 70}}
+                        style={{width: 100, height: 70}}
                         src={product.img}
                         alt="imagen del producto"
                       ></img>
@@ -138,11 +138,11 @@ const Carrito = () => {
             ) : (
               <>
                 <span>
-                  <b>Total de Productos:</b> {tQuantity}
+                  <b>Total de Productos: </b>
+                  {tQuantity}
                 </span>
                 <span>
-                  <b>Total a Pagar:</b> ${" "}
-                  {new Intl.NumberFormat().format(toPay)}
+                  <b>Total a Pagar: </b>${new Intl.NumberFormat().format(toPay)}
                 </span>
               </>
             )}
@@ -164,7 +164,7 @@ const Carrito = () => {
         </>
       ) : (
         <div className="carrito__vacio">
-          <h1>El Carrito esta Vacío</h1>
+          <h2>El Carrito esta Vacío</h2>
           <SeguirComprando
             ancho={180}
             largo={35}

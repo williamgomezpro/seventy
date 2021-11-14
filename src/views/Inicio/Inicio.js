@@ -5,9 +5,9 @@ import ItemListContainer from "../../components/Container/ItemListContainer/Item
 
 const Inicio = () => {
   return (
-    <div>
+    <>
       <ItemListContainer title="Listado de Zapatillas" />
-    </div>
+    </>
   );
 };
 

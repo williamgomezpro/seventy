@@ -5,10 +5,9 @@ import "./ItemListContainer.css";
 import ItemList from "../../ItemList/ItemList";
 
 // prop "title" destructurada
-const ItemListContainer = ({title}) => {
+const ItemListContainer = () => {
   return (
     <div className="main">
-      <h1>{title}</h1>
       <ItemList />
     </div>
   );

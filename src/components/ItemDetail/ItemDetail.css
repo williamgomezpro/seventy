@@ -18,7 +18,9 @@
   justify-content: center;
 }
 .detalle__body--right > img {
-  object-fit: cover;
+  margin-top: -30px;
+  width: 400px;
+  height: 300px;
 }
 .detalle__body--left {
   display: flex;
@@ -75,7 +77,6 @@
   cursor: pointer;
   border: 1px solid silver;
 }
-
 .detalle__body--add {
   color: #4eab54;
 }

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 30px 100px;
-  margin: 50px 100px 0;
+  margin: 170px 100px 0;
   border: 1px solid Gainsboro;
   border-bottom: 0;
   background-color: lavender;
@@ -10,7 +10,6 @@
   font-size: 0.9em;
   font-weight: 700;
 }
-
 .row__table {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -22,7 +21,6 @@
   font-family: "Lexend", sans-serif;
   font-size: 0.9em;
 }
-
 .row__table--empty {
   display: flex;
   height: 114px;
@@ -32,30 +30,28 @@
   margin: 0 100px; 
   background-color: white;
 }
-
 .col__table--one {
   grid-column: 1/2;
 }
 .ol__table--one:hover {
   background-color: WhiteSmoke;
 }
-
 .col__table--two {
   grid-column: 2/3;
+  align-self: center;
 }
-
 .col__table--three {
   grid-column: 3/4;
+  align-self: center;
 }
-
 .col__table--four {
   grid-column: 4/5;
+  align-self: center;
 }
-
 .col__table--five {
   grid-column: 5/6;
+  align-self: center;
 }
-
 .footer__table--resumen {
   padding: 20px 0;
   margin: 0 100px;
@@ -78,7 +74,6 @@
   width: 100%;
   padding-bottom: 10px;
 }
-
 .input__edit {
   border: none;
   border: 1px solid lavender;
@@ -89,11 +84,9 @@
   background-color: AliceBlue;
   font-weight: 700;
 }
-
 .input__edit:hover {
   background-color: white;
 }
-
 .acciones {
   display: flex;
   justify-content: center;
@@ -101,7 +94,6 @@
   column-gap: 15px;
   text-align: center;
 }
-
 .acciones__edit {
   height: 28px;
   width: 50%;
@@ -111,7 +103,6 @@
   cursor: pointer;
   font-size: 1em;
 }
-
 .acciones__delet {
   height: 28px;
   width: 50%;
@@ -121,7 +112,6 @@
   cursor: pointer;
   font-size: 1em;
 }
-
 .acciones__edit:hover,
 .acciones__delet:hover,
 .footer__table--boton:hover {
@@ -129,7 +119,6 @@
   color: black;
   border: 1px solid silver;
 }
-
 .footer__table--botonera {
   padding: 20px 100px;
   margin: 0 100px 30px;
@@ -143,7 +132,6 @@
   column-gap: 10px;
   justify-content: left;
 }
-
 .footer__table--boton {
   height: 35px;
   width: 180px;
@@ -159,12 +147,14 @@
   color: OrangeRed;
   font-weight: 700;
 }
-
 .carrito__vacio {
   border: 1px solid LightGray;
   background-color: MintCream;
   border-radius: 12px;
   padding: 20px;
-  margin: 50px 200px;
+  margin: 130px 100px;
   font-size: 1em;
+}
+.carrito__vacio h1 {
+  padding: 30px ;
 }

@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react";
+import {collection, getDocs} from "firebase/firestore";
+import {db} from "../../firebase";
 import "./ItemList.css";
 
 // componentes a usar
@@ -11,15 +13,25 @@ const ItemList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://api.mercadolibre.com/sites/MLC/search?q=Zapatillas%20asic&condition=new&limit=30")
-      .then((response) => response.json())
-      .then((response) => setData(response.results))
-      .then(() => setIsLoading(false));
+    const request = async () => {
+      try {
+        const arrayProducts = [];
+        const products = await getDocs(collection(db, "product"));
+        products.forEach((item) => {
+          arrayProducts.push({...item.data(), id: item.id});
+        });
+        setData(arrayProducts);
+        setIsLoading(false)
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    request();
   }, []);
 
   return (
     <>
-      {isLoading && <Loader padding={50}/>}
+      {isLoading && <Loader padding={50} />}
       <div className="card__list">
         {data.map((item) => {
           return (
@@ -27,9 +39,8 @@ const ItemList = () => {
               <Item
                 id={item.id}
                 title={item.title}
-                pictureUrl={item.thumbnail}
+                img={item.img}
                 price={item.price}
-                current={item.currency_id}
               />
             </div>
           );

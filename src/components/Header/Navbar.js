@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {db} from "../../firebase";
+import {collection, getDocs} from "firebase/firestore";
 import "./NavBar.css";
 
 // se importa link de react router DOM
@@ -8,6 +10,23 @@ import {Link} from "react-router-dom";
 import CartWidget from "../Widgets/CartWidget";
 
 const NavBar = () => {
+  const [dataNav, setDataNav] = useState([]);
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const arrayCategory = [];
+        const category = await getDocs(collection(db, "category"));
+        category.forEach((item) => {
+          arrayCategory.push({...item.data(), id: item.id});
+        });
+        setDataNav(arrayCategory);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    request();
+  }, []);
   return (
     <header>
       <div className="logo">
@@ -19,7 +38,18 @@ const NavBar = () => {
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/catalogo">Catálogo</Link>
+            <Link to="/">Catálogo</Link>
+            <ul>
+              {dataNav.map((item, inx) => {
+                return (
+                  <div key={inx}>
+                    <Link to={`/catalogo/${item.id}`}>
+                      <li>{item.name}</li>
+                    </Link>
+                  </div>
+                );
+              })}
+            </ul>
           </li>
         </ul>
       </nav>

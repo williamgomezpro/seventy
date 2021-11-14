@@ -1,5 +1,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
+import {doc, getDoc} from "firebase/firestore";
+import { db } from "../../../firebase";
 import "./ItemDetailContainer.css";
 
 // componente loader
@@ -8,34 +10,36 @@ import Loader from "../../Loader/Loader";
 // componente que contiene el detalle del producto
 import ItemDetail from "../../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = ({title, idItem}) => {
+const ItemDetailContainer = ({idItem}) => {
   const [dataDetail, setDataDetail] = useState({}); // estado para almacenar la info enviada por la API
   const [isLoading, setIsLoading] = useState(false); // estado para mostrar o no el loader
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://api.mercadolibre.com/items/${idItem}`)
-      .then((response) => response.json())
-      .then((response) =>
-        // actualiza la data, con un objeto que tiene las propiedades a pintar
+    const request = async () => {
+      try {
+        const sqlProduct = doc(db, 'product', idItem);
+        const detail = await getDoc(sqlProduct);
+        const sqlCategory = doc(db, 'category', detail.data().category.id);
+        const category = await getDoc(sqlCategory);
         setDataDetail({
-          id: response.id,
-          picture: response.pictures[0].url,
-          title: response.title,
-          price: response.price,
-          stock: response.initial_quantity,
-          moneda: response.currency_id,
-        })
-      ) // luego de la promesa se actualiza el estado del loader
-      .then(() => setIsLoading(false))
-      .catch((error) =>
-        console.log(`Hubo un problema con la petición: ${error.message}`)
-      );
+          id: idItem,
+          img: detail.data().img,
+          title: detail.data().title,
+          price: detail.data().price,
+          stock: detail.data().stock,
+          category: category.data().name
+        });
+        setIsLoading(false)
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    request();
   }, [idItem]);
 
   return (
     <div className="main__detail">
-      <h1>{title}</h1>
       {isLoading ? <Loader padding={50}/> : <ItemDetail data={dataDetail} />}
     </div>
   );
