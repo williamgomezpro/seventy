@@ -18,6 +18,7 @@ import Inicio from "./views/Inicio/Inicio";
 import Catalogo from "./views/Catalogo/Catalogo";
 import Detalle from "./views/Detalle/Detalle";
 import Carrito from "./views/Carrito/Carrito";
+import Checkout from "./views/Checkout/Checkout";
 
 function App() {
   return (
@@ -27,9 +28,10 @@ function App() {
           <NavBar />
           <Switch>
             <Route path="/" exact component={Inicio} />
-            <Route path="/catalogo/:id" exact component={Catalogo} />
+            <Route path="/catalogo/:id" component={Catalogo} />
             <Route path="/detalle/:id" component={Detalle} />
             <Route path="/carrito" component={Carrito} />
+            <Route path="/checkout" component={Checkout} />
           </Switch>
         </div>
       </Router>

@@ -9,8 +9,9 @@ import {
   faEdit,
   faTrashAlt,
   faHandPointRight,
-  faTrash
+  faTrash,
+  faMoneyBillAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 // se crea la librería de iconos a usar
-library.add(faShoppingCart, faSpinner, faCircleNotch, faEdit, faTrashAlt, faHandPointRight, faTrash);
+library.add(faShoppingCart, faSpinner, faCircleNotch, faEdit, faTrashAlt, faHandPointRight, faTrash, faMoneyBillAlt);

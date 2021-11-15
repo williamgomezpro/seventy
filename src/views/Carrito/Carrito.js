@@ -4,8 +4,9 @@ import "./Carrito.css";
 
 // iconos de font awesome y boton
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SeguirComprando from "../../components/Botones/SeguirComprando";
+import SeguirComprando from "../../components/Buttons/SeguirComprando";
 import Loader from "../../components/Loader/Loader";
+import { Link } from "react-router-dom";
 
 const Carrito = () => {
   // uso del contexto CartContext
@@ -149,6 +150,11 @@ const Carrito = () => {
           </div>
 
           <div className="footer__table--botonera">
+            <Link to="/checkout">
+            <button className="footer__table--boton">
+              <FontAwesomeIcon icon="money-bill-alt" /> Finalizar Orden
+            </button>
+            </Link>
             <button className="footer__table--boton" onClick={clearCart}>
               <FontAwesomeIcon icon="trash" /> Vaciar carrito
             </button>

@@ -3,7 +3,7 @@ import "./ItemCounter.css";
 
 // iconos de font awesome a usar y botones
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SeguirComprando from "../Botones/SeguirComprando";
+import SeguirComprando from "../Buttons/SeguirComprando";
 
 const ItemCount = ({stock, initial, onAdd}) => {
   // estados iniciales
