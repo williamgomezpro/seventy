@@ -3,15 +3,13 @@ import {db} from "../../firebase";
 import {collection, getDocs} from "firebase/firestore";
 import "./NavBar.css";
 
-// se importa link de react router DOM
-import {Link} from "react-router-dom";
-
-// se importa el componente del carrito
+// componentes
 import CartWidget from "../Widgets/CartWidget";
+import {Link} from "react-router-dom";
+import {animateScroll as scroll} from "react-scroll";
 
 const NavBar = () => {
   const [dataNav, setDataNav] = useState([]);
-
   useEffect(() => {
     const request = async () => {
       try {
@@ -27,37 +25,49 @@ const NavBar = () => {
     };
     request();
   }, []);
+
+  const onClickUp = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <header>
       <div className="logo">
-        <Link to="/">Senventy</Link>
+        <Link to="/" onClick={onClickUp}>
+          Senventy
+        </Link>
       </div>
       <nav className="navBar">
         <ul>
           <li>
-            <Link to="/">Inicio</Link>
+            <Link to="/" onClick={onClickUp}>
+              Inicio
+            </Link>
           </li>
           <li>
-            <Link to="/">Catálogo</Link>
+            <Link to="/" onClick={onClickUp}>
+              Catálogo
+            </Link>
             <ul>
               {dataNav.map((item, inx) => {
                 return (
                   <div key={inx}>
-                    <Link to={`/catalogo/${item.id}`}>
+                    <Link to={`/catalogo/${item.id}`} onClick={onClickUp}>
                       <li>{item.name}</li>
                     </Link>
                   </div>
                 );
               })}
+              <li className="category__all">
+                <Link to="/todos" onClick={onClickUp}>
+                  Todos los Zapatos
+                </Link>
+              </li>
             </ul>
           </li>
         </ul>
       </nav>
-      <div className="cart">
-        <Link to="/carrito" className="cart__url">
-          <CartWidget />
-        </Link>
-      </div>
+      <CartWidget />
     </header>
   );
 };

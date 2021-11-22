@@ -1,0 +1,96 @@
+.enlace-lg {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  background-color: var(--background-button-first);
+  color: var(--text-color-button-first);
+  font-size: 1em;
+  letter-spacing: 0.4px;
+  border: 0;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.enlace-lg-different {
+  background-color: var(--background-button-second);
+  color: var(--text-color-first);
+  border: 1px solid var(--border-color-first);
+}
+
+.enlace-lg:hover {
+  cursor: pointer;
+  background-color: var(--background-button-hover);
+  color: var(--text-color-first);
+}
+
+.button-icon-sm {
+  color: var(--text-color-button-first);
+  background-color: var(--background-button-first);
+  border-radius: 12px;
+  height: 39px;
+  width: 165px;
+  border: 1px solid var(--border-color-second);
+  font-size: 0.9em;
+  cursor: pointer;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.button-icon-sm:hover {
+  color: var(--text-color-first);
+  background-color: var(--background-button-hover);
+  border: 1px solid var(--border-color-second);
+}
+
+.button-icon-different {
+  background-color: var(--background-button-third);
+  color: var(--text-color-first);
+  border: 1px solid var(--border-color-first);
+}
+
+.controls {
+  width: 25px;
+  height: 25px;
+  color: var(--text-color-first);
+  background-color: var(--background-button-second);
+  border: 1px solid var(--border-color-second);
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.controls:hover {
+  background-color: var(--background-button-hover);
+}
+
+.button-edit {
+  width: 80px;
+  height: 30px;
+  font-size: 1em;
+  color: var(--text-color-first);
+  background-color: var(--background-button-third);
+  border: 1px solid var(--border-color-second);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-edit:hover {
+  background-color: var(--background-button-hover);
+}
+
+.button-delete {
+  width: 80px;
+  height: 30px;
+  font-size: 1em;
+  color: var(--text-color-first);
+  background-color: var(--background-button-fourth);
+  border: 1px solid var(--border-color-second);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button-delete:hover {
+  background-color: var(--background-button-hover);
+}

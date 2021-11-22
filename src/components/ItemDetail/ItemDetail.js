@@ -1,15 +1,12 @@
-import {useState, useContext} from "react";
+import React, {useState, useContext} from "react";
 import "./ItemDetail.css";
-import {Link} from "react-router-dom";
 
-// iconos de font awesome a usar y botones
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SeguirComprando from "../Botones/SeguirComprando";
-
-// componente con el contador de unidades
+// componentes
+import {EnlaceButtonLg, EnlaceButtonLgDifferent} from "../Buttons/Buttons";
+import {MessageSuccesful, MessageError} from "../Message/Message";
 import ItemCount from "../ItemCount/ItemCount";
 
-// se importa el contexto del carrito de compras
+// se importa el contexto carrito de compras
 import {CartContext} from "../../Contexts/CartContext";
 
 const ItemDetail = ({data}) => {
@@ -17,7 +14,8 @@ const ItemDetail = ({data}) => {
   const [quantity, setQuantity] = useState(0);
 
   // uso del contexto del carrito de compras
-  const {addToCart, isInCart, totalQuantity, totalToPay} = useContext(CartContext);
+  const {addToCart, isInCart, totalQuantity, totalToPay} =
+    useContext(CartContext);
 
   // envento que se pasa por props al compoenente hijo "ItemCount"
   const onAdd = (e) => {
@@ -26,8 +24,9 @@ const ItemDetail = ({data}) => {
       id: data.id,
       name: data.title,
       price: data.price,
+      stock: data.stock,
       quantity: e.target.value,
-      img: data.img
+      img: data.img,
     };
     // se invoca la función del contexto que agrega al carrito
     addToCart(productObject);
@@ -48,46 +47,26 @@ const ItemDetail = ({data}) => {
         <div className="detalle__body--left">
           <h2>{data.title}</h2>
           <p>
-            Precio:{" "}
-            <span>
-              ${new Intl.NumberFormat().format(data.price)}
-            </span>
+            Precio: <span>${new Intl.NumberFormat().format(data.price)}</span>
           </p>
           <p>
-            Stock:{" "}
-            <span>{data.stock}</span>
+            Stock: <span>{data.stock}</span>
           </p>
           <p>
-            Categoría:{" "}
-            <span>{data.category}</span>
+            Categoría: <span>{data.category}</span>
           </p>
           {quantity === 0 && isInCart(data.id) === false ? (
             <ItemCount stock={data.stock} initial={1} onAdd={onAdd} />
           ) : (
             <>
-              <div className="detalle__body--buttom">
-                <h3>
-                  {quantity > 0 && isInCart(data.id) === true ? (
-                    <span className="detalle__body--add">
-                      Producto añadido exitosamente al carrito
-                    </span>
-                  ) : (
-                    <span className="detalle__body--notadd">
-                      Este producto ya esta añadido al carrito
-                    </span>
-                  )}
-                </h3>
-                <Link to="/carrito" className="detail__buton">
-                  <FontAwesomeIcon icon="shopping-cart" /> Finalizar compra
-                </Link>
-                <SeguirComprando
-                  ancho={300}
-                  largo={40}
-                  radius={12}
-                  backgroud="DarkSlateBlue"
-                  fontSize="1.1em"
-                  color="white"
-                />
+              {quantity > 0 && isInCart(data.id) === true ? (
+                <MessageSuccesful text="Zapato añadido exitosamente al carrito" />
+              ) : (
+                <MessageError text="Este zapato ya esta añadido al carrito" />
+              )}
+              <div className="detalle__footer">
+                <EnlaceButtonLg url="/carrito" text="Finalizar compra" />
+                <EnlaceButtonLgDifferent url="/" text="Seguir comprando" />
               </div>
             </>
           )}

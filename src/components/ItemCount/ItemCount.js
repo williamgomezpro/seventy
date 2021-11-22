@@ -1,9 +1,12 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import "./ItemCounter.css";
 
-// iconos de font awesome a usar y botones
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SeguirComprando from "../Buttons/SeguirComprando";
+// componentes
+import {
+  ButtonIconSm,
+  EnlaceButtonIconSm,
+  ButtonControl,
+} from "../Buttons/Buttons";
 
 const ItemCount = ({stock, initial, onAdd}) => {
   // estados iniciales
@@ -30,31 +33,28 @@ const ItemCount = ({stock, initial, onAdd}) => {
     <>
       <div className="controles">
         <div className="col__uno">
-          <button className="controles__button" onClick={incrementar}>
-            +
-          </button>
+          <ButtonControl icon="caret-up" event={incrementar} type="button" />
         </div>
         <div className="col__dos">
           <span>{contador}</span>
         </div>
         <div className="col__tres">
-          <button className="controles__button" onClick={decrementar}>
-            -
-          </button>
+          <ButtonControl icon="caret-down" event={decrementar} type="button" />
         </div>
         <div className="col__cuatro">
-          <button className="buton" onClick={onAdd} value={contador}>
-            <FontAwesomeIcon icon="shopping-cart" /> Añadir al carrito
-          </button>
+          <ButtonIconSm
+            event={onAdd}
+            value={contador}
+            text="Añadir al carrito"
+            type="button"
+            icon="shopping-cart"
+          />
         </div>
         <div className="col__cinco">
-          <SeguirComprando
-            ancho={160}
-            largo={38}
-            radius={12}
-            backgroud="RebeccaPurple"
-            fontSize="0.9em"
-            color="white"
+          <EnlaceButtonIconSm
+            text="Seguir comprando"
+            icon="hand-point-right"
+            url="/"
           />
         </div>
       </div>

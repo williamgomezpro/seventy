@@ -1,0 +1,10 @@
+.main__checkout {
+  display: flex;
+  border: 1px solid var(--border-color-first);
+  border-radius: 12px;
+  background-color: var(--background-color-second);
+  padding: 30px 50px;
+  margin: 0 100px 100px;
+  column-gap: 50px;
+  justify-content: space-between;
+}

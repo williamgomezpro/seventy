@@ -1,0 +1,19 @@
+h1 {
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 25px;
+  font-size: 1.7em;
+  margin: 0 0 80px;
+  z-index: 1;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 70px;
+  border-bottom: 2px solid indigo;
+  right: calc(50% - 35px);
+  bottom: 0;
+}

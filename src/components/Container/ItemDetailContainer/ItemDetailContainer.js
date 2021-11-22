@@ -1,13 +1,9 @@
-import React from "react";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {doc, getDoc} from "firebase/firestore";
-import { db } from "../../../firebase";
-import "./ItemDetailContainer.css";
+import {db} from "../../../firebase";
 
-// componente loader
+// componentes
 import Loader from "../../Loader/Loader";
-
-// componente que contiene el detalle del producto
 import ItemDetail from "../../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({idItem}) => {
@@ -18,9 +14,9 @@ const ItemDetailContainer = ({idItem}) => {
     setIsLoading(true);
     const request = async () => {
       try {
-        const sqlProduct = doc(db, 'product', idItem);
+        const sqlProduct = doc(db, "product", idItem);
         const detail = await getDoc(sqlProduct);
-        const sqlCategory = doc(db, 'category', detail.data().category.id);
+        const sqlCategory = doc(db, "category", detail.data().category.id);
         const category = await getDoc(sqlCategory);
         setDataDetail({
           id: idItem,
@@ -28,9 +24,9 @@ const ItemDetailContainer = ({idItem}) => {
           title: detail.data().title,
           price: detail.data().price,
           stock: detail.data().stock,
-          category: category.data().name
+          category: category.data().name,
         });
-        setIsLoading(false)
+        setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -39,9 +35,9 @@ const ItemDetailContainer = ({idItem}) => {
   }, [idItem]);
 
   return (
-    <div className="main__detail">
-      {isLoading ? <Loader padding={50}/> : <ItemDetail data={dataDetail} />}
-    </div>
+    <main>
+      {isLoading ? <Loader padding={50} /> : <ItemDetail data={dataDetail} />}
+    </main>
   );
 };
 

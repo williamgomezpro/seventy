@@ -1,12 +1,17 @@
-import {useContext, useState} from "react";
+import React, {useContext, useState} from "react";
 import {CartContext} from "../../Contexts/CartContext";
 import "./Carrito.css";
 
-// iconos de font awesome y boton
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import SeguirComprando from "../../components/Buttons/SeguirComprando";
+// componentes a usar
 import Loader from "../../components/Loader/Loader";
-import { Link } from "react-router-dom";
+import Title from "../../components/Title/Title";
+import {MessageBasic} from "../../components/Message/Message";
+import {
+  EnlaceButtonIconSm,
+  ButtonIconSm,
+  ButtonEdit,
+  ButtonDelete,
+} from "../../components/Buttons/Buttons";
 
 const Carrito = () => {
   // uso del contexto CartContext
@@ -61,13 +66,15 @@ const Carrito = () => {
   };
 
   return (
-    <>
+    <main>
       {productsCart.length > 0 ? (
         <>
+          <Title title="Carrito" />
           <div className="header__table">
             <div>Imagen</div>
             <div>Título</div>
             <div>Precio</div>
+            <div>Stock</div>
             <div>Cantidad</div>
             <div>Acciones</div>
           </div>
@@ -95,36 +102,41 @@ const Carrito = () => {
                     </div>
                     <div className="col__table--three">
                       <span>
-                        ${new Intl.NumberFormat().format(product.price)}
+                        $ {new Intl.NumberFormat().format(product.price)}
                       </span>
                     </div>
                     <div className="col__table--four">
+                      <span>{product.stock}</span>
+                    </div>
+                    <div className="col__table--five">
                       <input
                         className="input__edit"
                         id={inx}
                         type="number"
                         value={
-                          valueInput > 0 && index === inx
+                          valueInput > 0 &&
+                          valueInput <= product.stock &&
+                          index === inx
                             ? valueInput
                             : product.quantity
                         }
                         onChange={(e) => onChangeQuantity(e, inx)}
                       />
                     </div>
-                    <div className="col__table--five">
+                    <div className="col__table--six">
                       <div className="acciones">
-                        <button
-                          className="acciones__edit"
-                          onClick={(e) => editQuantity(inx, product.id)}
-                        >
-                          <FontAwesomeIcon icon="edit" /> Editar
-                        </button>
-                        <button
-                          className="acciones__delet"
-                          onClick={() => eliminar(inx)}
-                        >
-                          <FontAwesomeIcon icon="trash-alt" /> Eliminar
-                        </button>
+                        <ButtonEdit
+                          icon="edit"
+                          text="Editar"
+                          type="button"
+                          event={(e) => editQuantity(inx, product.id)}
+                        />
+                        <ButtonDelete
+                          icon="trash-alt"
+                          text="Eliminar"
+                          type="button"
+                          event={() => eliminar(inx)}
+                        />
                       </div>
                     </div>
                   </>
@@ -143,45 +155,43 @@ const Carrito = () => {
                   {tQuantity}
                 </span>
                 <span>
-                  <b>Total a Pagar: </b>${new Intl.NumberFormat().format(toPay)}
+                  <b>Total a Pagar: </b>${" "}
+                  {new Intl.NumberFormat().format(toPay)}
                 </span>
               </>
             )}
           </div>
 
           <div className="footer__table--botonera">
-            <Link to="/checkout">
-            <button className="footer__table--boton">
-              <FontAwesomeIcon icon="money-bill-alt" /> Finalizar Orden
-            </button>
-            </Link>
-            <button className="footer__table--boton" onClick={clearCart}>
-              <FontAwesomeIcon icon="trash" /> Vaciar carrito
-            </button>
-            <SeguirComprando
-              ancho={180}
-              largo={35}
-              radius={0}
-              backgroud="white"
-              fontSize="0.9em"
-              color="indigo"
+            <EnlaceButtonIconSm
+              url="/checkout"
+              text="Check-Out"
+              icon="money-bill-alt"
+            />
+            <ButtonIconSm
+              text="Vaciar carrito"
+              event={clearCart}
+              icon="trash"
+              type="button"
+            />
+            <EnlaceButtonIconSm
+              url="/"
+              text="Comprar más"
+              icon="shopping-cart"
             />
           </div>
         </>
       ) : (
-        <div className="carrito__vacio">
-          <h2>El Carrito esta Vacío</h2>
-          <SeguirComprando
-            ancho={180}
-            largo={35}
-            radius={0}
-            backgroud="white"
-            fontSize="0.9em"
-            color="indigo"
+        <>
+          <MessageBasic text="El carrito esta vacío" />
+          <EnlaceButtonIconSm
+            url="/"
+            text="Seguir comprando"
+            icon="hand-point-right"
           />
-        </div>
+        </>
       )}
-    </>
+    </main>
   );
 };
 

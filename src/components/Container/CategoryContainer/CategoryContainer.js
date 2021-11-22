@@ -1,12 +1,11 @@
-import React from "react";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {collection, getDocs} from "firebase/firestore";
 import {db} from "../../../firebase";
-import "./CategoryContainer.css";
 
-// componentes
+// componentes a usar
 import Loader from "../../Loader/Loader";
 import Item from "../../Item/Item";
+import Title from "../../Title/Title";
 
 const CategoryContainer = ({id, title}) => {
   const [dataCategory, setDataCategory] = useState([]);
@@ -30,17 +29,18 @@ const CategoryContainer = ({id, title}) => {
     request();
   }, [id]);
 
+  // filtro el arreglo de las categorías por el ID pasado por props
   const productsCategory = dataCategory.filter(
     (element) => element.category.id === id
   );
 
   return (
-    <div className="main__category">
+    <main>
       {isLoader ? (
         <Loader padding={50} />
       ) : (
         <>
-          <h1>{title}</h1>
+          <Title title={title} />
           <div className="card__list">
             {productsCategory.map((item) => {
               return (
@@ -57,7 +57,7 @@ const CategoryContainer = ({id, title}) => {
           </div>
         </>
       )}
-    </div>
+    </main>
   );
 };
 

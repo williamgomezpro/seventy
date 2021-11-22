@@ -1,0 +1,72 @@
+.col__left {
+  width: 40%;
+}
+
+.col__right {
+  width: 60%;
+}
+
+.heading {
+  font-size: 1.1em;
+  color: var(--text-color-first);
+  text-align: left;
+  border: 1px solid var(--border-color-first);
+  border-bottom: none;
+  padding: 10px 20px;
+  background-color: var(--background-header);
+}
+
+.order__form {
+  max-height: 400px;
+  background-color: var(--background-color-first);
+  padding: 20px;
+  border: 1px solid var(--border-color-first);
+}
+
+.field {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.field label {
+  font-size: 12px;
+  color: var(--text-color-first);
+  display: block;
+  text-align: left;
+}
+
+.field label span {
+  color: red;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.field input {
+  border: none;
+  border-bottom: 1px solid var(--border-color-first);
+  width: 100%;
+  outline: none;
+  padding: 0;
+  height: 28px;
+}
+
+.field__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.field input:focus ~ .field__indicator {
+  width: 100%;
+  left: 0;
+  background-color: var(--text-color-second);
+}
+
+.button__order {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}

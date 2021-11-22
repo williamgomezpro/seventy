@@ -1,16 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
-
 header {
   display: flex;
   align-items: center;
   padding: 0 100px;
   width: 100%;
-  font-family: "Inter", sans-serif;
-  border-bottom: 1px solid Gainsboro;
-  background-color: Lavender;
+  border-bottom: 1px solid var(--border-color-first);
+  background-color: var(--background-header);
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .logo {
@@ -23,7 +20,7 @@ header {
 
 .logo a {
   text-decoration: none;
-  color: indigo;
+  color: var(--text-color-second);
 }
 
 .navBar {
@@ -40,12 +37,12 @@ header {
 
 .navBar > ul > li > a {
   text-decoration: none;
-  color: black;
+  color: var(--text-color-first);
 }
 
 .navBar > ul > li > a:hover {
   text-decoration: none;
-  color: rgb(70, 68, 68);
+  color: var(--text-color-second);
   cursor: pointer;
 }
 
@@ -53,13 +50,13 @@ header {
 
 .navBar > ul > li > ul {
   position: absolute;
-  background-color: lavender;
+  background-color: var(--background-color-first);
   color: black;
   display: none;
   left: -50px;
   top: 50px;
   width: max-content;
-  border: 1px solid gainsboro;
+  border: 1px solid var(--border-color-first);
   text-align: left;
 }
 
@@ -70,52 +67,37 @@ header {
 .navBar > ul > li > ul > div {
   cursor: pointer;
   padding: 20px;
-  background-color: whitesmoke;
+  background-color: var(--background-color-second);
 }
 
 .navBar > ul > li > ul > div > a {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
 }
 
 .navBar > ul > li > ul > div > a:hover {
-  color: indigo;
+  color: var(--text-color-second);
 }
 
 .navBar > ul > li > ul > div > a > li {
   list-style: none;
 }
 
-.cart {
-  width: 5%;
-  position: relative;
-  z-index: 1;
-  right: 0;
-}
-
-.cart__url {
-  font-size: 1.5em;
-  text-align: right;
-  color: indigo;
+.category__all {
   cursor: pointer;
-  text-decoration: none;
+  padding: 20px 0;
+  background-color: var(--background-color-second);
+  list-style: none;
 }
 
-.cart__url > div {
-  position: absolute;
-  font-size: 12px;
-  background-color: red;
-  color: white;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  font-weight: 700;
-  border: 1px solid indigo;
-  z-index: 3;
-  top: -11px;
-  right: -1px;
+.category__all a {
+  text-decoration: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 20px;
+  background-color: var(--background-color-second);
+}
+
+.category__all a:hover {
+  color: var(--text-color-second);
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import "./Item.css";
 
-// se importa link de react router DOM
-import { Link } from "react-router-dom";
+// componentes
+import {EnlaceButtonLg} from "../Buttons/Buttons";
 
 const Item = ({id, price, title, img}) => {
   return (
@@ -12,10 +12,12 @@ const Item = ({id, price, title, img}) => {
       </div>
       <div className="card__body">
         <p className="cad__body--title">{title}</p>
-        <p className="card__body--price"><b>Precio: </b>${new Intl.NumberFormat().format(price)}</p>
+        <p className="card__body--price">
+          <b>Precio: </b>${new Intl.NumberFormat().format(price)}
+        </p>
       </div>
       <div className="card__footer">
-        <Link to={`/detalle/${id}`}>Ver Detalle</Link>
+        <EnlaceButtonLg url={`/detalle/${id}`} text="Ver detalle" />
       </div>
     </article>
   );

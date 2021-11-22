@@ -1,0 +1,34 @@
+.cart {
+  width: 5%;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.cart__url {
+  font-size: 1.5em;
+  text-align: right;
+  color: var(--text-color-second);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.cart__url > div {
+  position: absolute;
+  font-size: 12px;
+  background-color: red;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-weight: 700;
+  border: 1px solid var(--border-color-first);
+  z-index: 4;
+  top: -11px;
+  right: -20px;
+}

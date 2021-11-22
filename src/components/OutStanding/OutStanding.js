@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {collection, getDocs} from "firebase/firestore";
+import {collection, getDocs, query, where} from "firebase/firestore";
 import {db} from "../../firebase";
 
 // componentes a usar
@@ -7,7 +7,7 @@ import Item from "../Item/Item";
 import Loader from "../Loader/Loader";
 import Title from "../Title/Title";
 
-const ItemList = ({title}) => {
+const OutStanding = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,7 +16,11 @@ const ItemList = ({title}) => {
     const request = async () => {
       try {
         const arrayProducts = [];
-        const products = await getDocs(collection(db, "product"));
+        const q = query(
+          collection(db, "product"),
+          where("outstanding", "==", true)
+        );
+        const products = await getDocs(q);
         products.forEach((item) => {
           arrayProducts.push({...item.data(), id: item.id});
         });
@@ -35,7 +39,7 @@ const ItemList = ({title}) => {
         <Loader padding={50} />
       ) : (
         <>
-          <Title title={title} />
+          <Title title="Destacados" />
           <div className="card__list">
             {data.map((item) => {
               return (
@@ -56,4 +60,4 @@ const ItemList = ({title}) => {
   );
 };
 
-export default ItemList;
+export default OutStanding;

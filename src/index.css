@@ -1,31 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
+
+:root {
+  /* primary */
+  --text-color-first: black;
+  --text-color-second: indigo;
+  --background-color-first: white;
+  --background-color-second: whitesmoke;
+
+  /* Header */
+  --background-header: Lavender;
+
+  /* Buttons */
+  --background-button-first: indigo;
+  --background-button-second: lavender;
+  --background-button-third: LightSteelBlue;
+  --background-button-fourth: LightSalmon;
+
+  --background-button-hover: LightGray;
+  --text-color-button-first: white;
+
+  /* Bordes */
+  --border-color-first: gainsboro;
+  --border-color-second: silver;
+  --border-color-three: LightGray;
+
+  /* messages */
+  --background-mensaje-first: MintCream;
+  --text-color-mensaje-first: #4eab54;
+  --text-color-mensaje-second: OrangeRed;
+
+  /* Footer */
+  --background-color-footer-first: DimGray;
+  --color-first: white;
+  --color-second: #ccc;
+  --color-third: indigo;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: white;
+  background-color: var(--background-color-second);
+  font-family: "Inter", sans-serif;
+  margin-bottom: 450px;
 }
-h1 {
-  font-family: "Lexend", sans-serif;
-  font-weight: 700;
+
+html {
   position: relative;
-  padding: 0 0 25px;
-  font-size: 1.7em;
-  margin: 30px 0 80px;
+  min-height: 100%;
 }
-h1::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 70px;
-  border-bottom: 2px solid indigo;
-  right: calc(50% - 35px);
-  bottom: 0;
-}
+
 h2 {
-  font-family: "Lexend", sans-serif;
   font-weight: 700;
   font-size: 1.7em;
   margin: 30px;
+}
+
+main {
+  background-color: var(--background-color-second);
+  margin: 150px 0 0 0;
+  padding-bottom: 50px;
+  text-align: center;
+ }
+
+.card__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 30px;
+  margin: 30px 100px 50px;
+  text-align: center;
+  background-color: var(--background-color-second);
 }

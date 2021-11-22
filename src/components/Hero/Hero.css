@@ -1,0 +1,43 @@
+.hero {
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(
+      to right,
+      hsla(0, 0%, 100%, 0.2),
+      hsla(275, 100%, 25%, 0.4)
+    ),
+    url(./img/pexels-rafa-de-345415.webp);
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  top: 80px;
+  margin: 0 0 80px;
+}
+
+.text-hero {
+  display: flex;
+  height: 450px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.text-hero h3 {
+  font-size: 40px;
+  color: white;
+  font-weight: 700;
+}
+
+.text-hero h4 {
+  font-size: 30px;
+  font-weight: 400;
+  color: white;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
