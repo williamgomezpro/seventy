@@ -11,7 +11,7 @@
 * JSX
 * CSS3 vanilla
 * Font Awesome (librería de íconos)
-* Firabase (servicio backend de Google)
+* Firebase (servicio backend de Google)
 * Formik (librería para capturar campos de formularios)
 * Yup (librería que permite validar campos de formularios)
 
